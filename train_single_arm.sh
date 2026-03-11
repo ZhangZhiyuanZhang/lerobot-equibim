@@ -1,6 +1,6 @@
 lerobot-train \
-    --dataset.repo_id=zhiyuan/pick_place \
-    --dataset.root=/home/zhiyuan/.cache/huggingface/lerobot/zhiyuan/pick_place \
+    --dataset.repo_id=<username>/pick_place \
+    --dataset.root=${HOME}/.cache/huggingface/lerobot/<username>/pick_place \
     --policy.type=act \
     --output_dir=outputs/train_act_test \
     --job_name=act_test \
@@ -8,5 +8,5 @@ lerobot-train \
     --wandb.enable=true \
     --wandb.project=Lerobot_Project \
     --policy.push_to_hub=false \
-    --steps=1000 \
+    --steps=200000 \
     --batch_size=8

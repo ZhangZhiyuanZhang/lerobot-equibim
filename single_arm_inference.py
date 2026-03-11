@@ -36,8 +36,8 @@ EPISODE_TIME_SEC = 30
 TASK_DESCRIPTION = "Pick and Place"
 
 # local checkpoint path
-LOCAL_CKPT_PATH = "/home/zhiyuan/Project/lerobot/outputs/train_act_test/checkpoints/last/pretrained_model"
-HF_DATASET_ID = "zhiyuan/eval_pick_place"
+LOCAL_CKPT_PATH = "/home/<username>/Project/lerobot/outputs/train_act_test/checkpoints/last/pretrained_model"
+HF_DATASET_ID = "<username>/eval_pick_place"
 
 # ===================== Camera =====================
 camera_config = {

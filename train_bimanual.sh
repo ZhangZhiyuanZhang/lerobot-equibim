@@ -1,7 +1,7 @@
 lerobot-train \
-  --dataset.repo_id=ZhiyuanZhangZhiyuan/lerobot_hanging \
+  --dataset.repo_id=<username>/lerobot_hanging \
   --dataset.revision=v0.4.0 \
-  --dataset.root=/scratch/gilbreth/zhan5570/Project/lerobot/data/lerobot_hanging \
+  --dataset.root=<your_path_to_the_dataset> \
   --dataset.streaming=false \
   --policy.type=act \
   --policy.device=cuda \

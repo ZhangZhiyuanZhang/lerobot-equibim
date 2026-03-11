@@ -68,7 +68,7 @@ obs_features = hw_to_dataset_features(robot.observation_features, "observation")
 dataset_features = {**action_features, **obs_features}
 
 dataset = LeRobotDataset.create(
-    repo_id="ZhiyuanZhangZhiyuan/lerobot_hanging",
+    repo_id="<username>/lerobot_hanging",
     fps=FPS,
     features=dataset_features,
     robot_type=robot.name,

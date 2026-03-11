@@ -40,8 +40,8 @@ EPISODE_TIME_SEC = 60
 TASK_DESCRIPTION = "Handover"
 
 # local checkpoint path
-LOCAL_CKPT_PATH = "training_outputs/hanging_act_equi/checkpoints/200000/pretrained_model"
-HF_DATASET_ID = "ZhiyuanZhangZhiyuan/eval_hanging_act_equi"
+LOCAL_CKPT_PATH = "<your_ckpts_path>"
+HF_DATASET_ID = "<your_id>"
 
 
 # ===================== Camera =====================
