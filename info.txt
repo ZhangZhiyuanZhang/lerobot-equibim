@@ -1,0 +1,98 @@
+Calibration saved to /home/zhiyuan/.cache/huggingface/lerobot/calibration/robots/so_follower/follower.json
+
+Calibration saved to /home/zhiyuan/.cache/huggingface/lerobot/calibration/teleoperators/so_leader/leader.json
+
+lerobot-teleoperate \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM0 \
+--robot.id=follower \
+--robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}}" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM1 \
+--teleop.id=leader \
+--display_data=false
+
+rm -rf /home/zhiyuan/.cache/huggingface/lerobot/zhiyuan/record-test
+
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM0 \
+--robot.id=follower \
+--robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}}" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM1 \
+--teleop.id=leader \
+--display_data=false \
+--dataset.repo_id=zhiyuan/record-test \
+--dataset.num_episodes=5 \
+--dataset.single_task="pick_place" \
+--dataset.push_to_hub=false \
+--dataset.episode_time_s=20 \
+--dataset.reset_time_s=5
+
+rm -rf /home/zhiyuan/Project/lerobot/outputs/train_act_test
+
+lerobot-train \
+--dataset.repo_id=zhiyuan/so101_test \
+--dataset.root=/home/zhiyuan/.cache/huggingface/lerobot/zhiyuan/record-test \
+--policy.type=act \
+--output_dir=outputs/train_act_test \
+--job_name=act_test \
+--policy.device=cuda \
+--wandb.enable=true \
+--wandb.project=Lerobot_Project \
+--policy.push_to_hub=false \
+--steps=1000 \
+--batch_size=8
+
+/home/zhiyuan/Project/lerobot/outputs
+└── train_act_test
+    ├── checkpoints
+    │   ├── 001000
+    │   │   ├── pretrained_model
+    │   │   │   ├── config.json
+    │   │   │   ├── model.safetensors
+    │   │   │   ├── policy_postprocessor.json
+    │   │   │   ├── policy_postprocessor_step_0_unnormalizer_processor.safetensors
+    │   │   │   ├── policy_preprocessor.json
+    │   │   │   ├── policy_preprocessor_step_3_normalizer_processor.safetensors
+    │   │   │   └── train_config.json
+    │   │   └── training_state
+    │   │       ├── optimizer_param_groups.json
+    │   │       ├── optimizer_state.safetensors
+    │   │       ├── rng_state.safetensors
+    │   │       └── training_step.json
+    │   └── last -> 001000
+    └── wandb
+        ├── debug-internal.log -> run-20260311_075147-qw4ih3yo/logs/debug-internal.log
+        ├── debug.log -> run-20260311_075147-qw4ih3yo/logs/debug.log
+        ├── latest-run -> run-20260311_075147-qw4ih3yo
+        └── run-20260311_075147-qw4ih3yo
+            ├── files
+            │   ├── config.yaml
+            │   ├── output.log
+            │   ├── requirements.txt
+            │   ├── wandb-metadata.json
+            │   └── wandb-summary.json
+            ├── logs
+            │   ├── debug-core.log -> /home/zhiyuan/.cache/wandb/logs/core-debug-20260311_075147.log
+            │   ├── debug-internal.log
+            │   └── debug.log
+            ├── run-qw4ih3yo.wandb
+            └── tmp
+                └── code
+
+
+rm -rf /home/zhiyuan/.cache/huggingface/lerobot/zhiyuan/eval_so101_test
+
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM0 \
+--robot.id=follower \
+--robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}}" \
+--display_data=false \
+--dataset.repo_id=zhiyuan/eval_so101_test \
+--dataset.single_task="pick_place" \
+--dataset.episode_time_s=20 \
+--dataset.push_to_hub=false \
+--policy.path=/home/zhiyuan/Project/lerobot/outputs/train_act_test/checkpoints/001000/pretrained_model

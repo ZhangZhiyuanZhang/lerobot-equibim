@@ -1,0 +1,14 @@
+
+
+# find port for each arm first
+# lerobot-find-port
+
+lerobot-calibrate \
+    --robot.type=so101_leader \
+    --robot.port=/dev/ttyACM1 \
+    --robot.id=leader
+
+lerobot-calibrate \
+    --robot.type=so101_follower \
+    --robot.port=/dev/ttyACM0 \
+    --robot.id=follower
