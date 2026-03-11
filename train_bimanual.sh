@@ -1,12 +1,14 @@
 lerobot-train \
---dataset.repo_id=zhiyuan/pick_place \
---dataset.root=/home/zhiyuan/.cache/huggingface/lerobot/zhiyuan/pick_place \
---policy.type=act \
---output_dir=outputs/train_act_test \
---job_name=act_test \
---policy.device=cuda \
---wandb.enable=true \
---wandb.project=Lerobot_Project \
---policy.push_to_hub=false \
---steps=1000 \
---batch_size=8
+  --dataset.repo_id=ZhiyuanZhangZhiyuan/lerobot_hanging \
+  --dataset.revision=v0.4.0 \
+  --dataset.root=/scratch/gilbreth/zhan5570/Project/lerobot/data/lerobot_hanging \
+  --dataset.streaming=false \
+  --policy.type=act \
+  --policy.device=cuda \
+  --output_dir=training_outputs/hanging_act \
+  --job_name=hanging_act \
+  --wandb.enable=true \
+  --wandb.project=lerobot \
+  --policy.push_to_hub=false \
+  --steps=200000 \
+  --batch_size=8

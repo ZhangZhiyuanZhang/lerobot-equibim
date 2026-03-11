@@ -23,7 +23,7 @@ import math
 from collections import deque
 from collections.abc import Callable
 from itertools import chain
-
+import random
 import einops
 import numpy as np
 import torch
@@ -42,7 +42,7 @@ from lerobot.utils.constants import ACTION, OBS_ENV_STATE, OBS_IMAGES, OBS_STATE
 # Symmetry utils for bi-arm ACT
 # ============================
 
-JOINT_SIGN = torch.tensor([+1, -1, -1, -1, +1, +1])  # 6-DoF arm
+JOINT_SIGN = torch.tensor([-1, +1, +1, +1, -1, +1])  # 6-DoF arm
 
 def mirror_state(state: torch.Tensor):
     """
@@ -87,6 +87,7 @@ def mirror_images(images):
     else:
         # Diffusion style: stacked tensor
         return torch.flip(images, dims=[-1])
+
 
 class ACTPolicy(PreTrainedPolicy):
     """
@@ -218,7 +219,7 @@ class ACTPolicy(PreTrainedPolicy):
 
             actions_hat_sym, _ = self.model(batch_sym)
 
-            sym_loss = (
+            eq_loss = (
                 F.mse_loss(
                     mirror_action(actions_hat.detach()),
                     actions_hat_sym,
@@ -227,8 +228,8 @@ class ACTPolicy(PreTrainedPolicy):
                 * valid
             ).mean()
 
-            loss = loss + self.config.sym_loss_weight * sym_loss
-            loss_dict["sym_loss"] = sym_loss.item()
+            loss = loss + self.config.eq_loss_weight * eq_loss
+            loss_dict["eq_loss"] = eq_loss.item()
 
         # ======================
         # KL loss
@@ -243,6 +244,7 @@ class ACTPolicy(PreTrainedPolicy):
             loss_dict["kld_loss"] = mean_kld.item()
 
         return loss, loss_dict
+
 
 class ACTTemporalEnsembler:
     def __init__(self, temporal_ensemble_coeff: float, chunk_size: int) -> None:
@@ -826,3 +828,4 @@ def get_activation_fn(activation: str) -> Callable:
     if activation == "glu":
         return F.glu
     raise RuntimeError(f"activation should be relu/gelu/glu, not {activation}.")
+    
