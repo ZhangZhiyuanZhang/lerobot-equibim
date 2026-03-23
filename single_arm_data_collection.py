@@ -14,7 +14,7 @@ NUM_EPISODES = 30
 FPS = 30
 EPISODE_TIME_SEC = 20
 RESET_TIME_SEC = 5
-TASK_DESCRIPTION = "Pick and Place"
+TASK_DESCRIPTION = "record-test"
 
 # ===================== Camera =====================
 camera_config = {

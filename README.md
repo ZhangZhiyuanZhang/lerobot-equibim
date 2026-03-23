@@ -42,12 +42,13 @@
     cd lerobot-equibim
     ```
 
-    Then, install the library in editable mode. This is useful if you plan to contribute to the code.
+    Then, install the library in editable mode:
     ```bash
     pip install -e .
+    pip install -e ".[feetech]"  # Required for real robot support (e.g., motor control, calibration)
     ```
 
-1. Experiment Tracking:
+2. Experiment Tracking:
     To use [Weights and Biases](https://docs.wandb.ai/models/quickstart) for experiment tracking, log in with
     ```bash
     wandb login
@@ -113,9 +114,9 @@
 
     ```bash
     lerobot-calibrate \
-        --robot.type=so101_leader \
-        --robot.port=/dev/ttyACM1 \
-        --robot.id=leader
+        --teleop.type=so101_leader \
+        --teleop.port=/dev/ttyACM1 \
+        --teleop.id=leader
     ```
 
     The calibration file will be saved to:
@@ -365,7 +366,12 @@ No additional modifications are required in the training or evaluation pipeline.
 ## Citation
 Please cite this paper if you find helpful,
 ```bash
-
+@article{zhang2026equibim,
+  title={EquiBim: Learning Symmetry-Equivariant Policy for Bimanual Manipulation},
+  author={Zhang, Zhiyuan and Mohan, Aditya and Han, Seungho and Shou, Wan and Wang, Dongyi and She, Yu},
+  journal={arXiv preprint arXiv:2603.08541},
+  year={2026}
+}
 ```
 
 ## License

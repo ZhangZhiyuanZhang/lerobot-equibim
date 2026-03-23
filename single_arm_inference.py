@@ -33,11 +33,11 @@ def reset_robot(robot, home_action, steps=100):
 NUM_EPISODES = 20
 FPS = 30
 EPISODE_TIME_SEC = 30
-TASK_DESCRIPTION = "Pick and Place"
+TASK_DESCRIPTION = "record-test"
 
 # local checkpoint path
-LOCAL_CKPT_PATH = "/home/<username>/Project/lerobot/outputs/train_act_test/checkpoints/last/pretrained_model"
-HF_DATASET_ID = "<username>/eval_pick_place"
+LOCAL_CKPT_PATH = "<path_to_lerobot-equibim>/outputs/train_act_test/checkpoints/last/pretrained_model"
+HF_DATASET_ID = "<username>/eval_so101_test"
 
 # ===================== Camera =====================
 camera_config = {

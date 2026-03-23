@@ -1,6 +1,6 @@
 lerobot-train \
-    --dataset.repo_id=<username>/pick_place \
-    --dataset.root=${HOME}/.cache/huggingface/lerobot/<username>/pick_place \
+    --dataset.repo_id=<username>/record-test \
+    --dataset.root=${HOME}/.cache/huggingface/lerobot/<username>/record-test \
     --policy.type=act \
     --output_dir=outputs/train_act_test \
     --job_name=act_test \
