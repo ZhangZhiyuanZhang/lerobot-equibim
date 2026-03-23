@@ -272,14 +272,14 @@ lerobot-find-port
 Then calibrate the four arms (example):
 ```bash
 lerobot-calibrate \
-    --robot.type=so101_leader \
-    --robot.port=/dev/ttyACM0 \
-    --robot.id=left_leader
+    --teleop.type=so101_leader \
+    --teleop.port=/dev/ttyACM0 \
+    --teleop.id=left_leader
 
 lerobot-calibrate \
-    --robot.type=so101_leader \
-    --robot.port=/dev/ttyACM1 \
-    --robot.id=right_leader
+    --teleop.type=so101_leader \
+    --teleop.port=/dev/ttyACM1 \
+    --teleop.id=right_leader
 
 lerobot-calibrate \
     --robot.type=so101_follower \
