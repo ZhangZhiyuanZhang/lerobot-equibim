@@ -364,8 +364,9 @@ No additional modifications are required in the training or evaluation pipeline.
 
 
 ## Citation
-Please cite this paper if you find helpful,
-```bash
+If you find this work helpful, please cite:
+
+```bibtex
 @article{zhang2026equibim,
   title={EquiBim: Learning Symmetry-Equivariant Policy for Bimanual Manipulation},
   author={Zhang, Zhiyuan and Mohan, Aditya and Han, Seungho and Shou, Wan and Wang, Dongyi and She, Yu},
