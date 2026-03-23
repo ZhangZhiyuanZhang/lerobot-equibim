@@ -2,7 +2,7 @@
 
 [Paper](https://arxiv.org/abs/2603.08541) |
 [Video](https://drive.google.com/file/d/1VZJ6U43vMfH2eT5yAYKibg7k1hce5Wp5/view?usp=drive_link)  
-<a href="https://zhangzhiyuanzhang.github.io/personal_website/">Zhiyuan Zhang*</a><sup>1</sup>, 
+<a href="https://zhangzhiyuanzhang.github.io/personal_website/">Zhiyuan Zhang</a><sup>1</sup>, 
 <a href="">Aditya Mohan</a><sup>1</sup>, 
 <a href="">Seungho Han</a><sup>1</sup>, 
 <a href="https://showone90.wixsite.com/show">Wan Shou</a><sup>2</sup>, 
