@@ -1,5 +1,7 @@
 # EquiBim: Learning Symmetry-Equivariant Policy for Bimanual Manipulation
 
+### 🎉 Accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)
+
 [Paper](https://arxiv.org/abs/2603.08541) |
 [Video](https://drive.google.com/file/d/1VZJ6U43vMfH2eT5yAYKibg7k1hce5Wp5/view?usp=drive_link)  
 <a href="https://zhangzhiyuanzhang.github.io/personal_website/">Zhiyuan Zhang</a><sup>1</sup>, 
